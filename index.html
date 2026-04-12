@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Juliana ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;600&display=swap');
 
         :root {
-            --primary: #ff4d6d;
-            --secondary: #ff758f;
-            --bg: #1a1a1a;
+            --primary-red: #e60000;
+            --deep-red: #8b0000;
+            --black: #000000;
+            --white: #ffffff;
             --paper: #ffffff;
-            --text: #590d22;
-            --glow: rgba(255, 255, 255, 0.3);
-            --daisy-center: #ffd700;
+            --text-dark: #1a1a1a;
+            --glow-red: rgba(230, 0, 0, 0.7);
         }
 
         body {
@@ -24,46 +24,51 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle, #2b0d15 0%, #000000 100%);
+            background: radial-gradient(circle, #3d0000 0%, #000000 100%);
             font-family: 'Dancing Script', cursive;
             overflow: hidden;
         }
 
+        /* Status de Conexão - Estilo Elegante */
         #connection-status {
             position: fixed;
             top: 30px;
             font-family: 'Montserrat', sans-serif;
-            color: #00ff41;
-            font-size: 0.7rem;
+            color: var(--white);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             z-index: 200;
+            font-weight: 300;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
 
         .dot {
             width: 8px;
             height: 8px;
-            background: #00ff41;
+            background: var(--white);
             border-radius: 50%;
-            animation: blink 1s infinite;
-            box-shadow: 0 0 10px #00ff41;
+            animation: heartbeat 1.5s infinite;
+            box-shadow: 0 0 15px var(--white);
         }
 
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; } }
 
         #timer {
             position: fixed;
-            top: 60px;
+            top: 65px;
             font-family: 'Montserrat', sans-serif;
-            color: var(--secondary);
-            font-size: 0.8rem;
+            color: var(--primary-red);
+            font-size: 0.85rem;
             text-align: center;
             opacity: 0;
             transition: opacity 2s;
             z-index: 200;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .container {
@@ -71,25 +76,27 @@
             z-index: 100;
         }
 
+        /* Envelope Vermelho & Preto */
         .envelope-wrapper {
             position: relative;
             cursor: pointer;
-            transition: all 0.5s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .envelope-wrapper:hover {
             transform: scale(1.05);
-            filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.6));
+            filter: drop-shadow(0 0 25px var(--glow-red));
         }
 
         .envelope {
             position: relative;
             width: 320px;
             height: 220px;
-            background: var(--secondary);
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            background: var(--primary-red);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
             z-index: 10;
+            border: 1px solid var(--deep-red);
         }
 
         .envelope::before {
@@ -99,9 +106,9 @@
             left: 0;
             border-left: 160px solid transparent;
             border-right: 160px solid transparent;
-            border-top: 110px solid var(--primary);
+            border-top: 115px solid var(--deep-red);
             transform-origin: top;
-            transition: transform 0.6s 0.4s ease;
+            transition: transform 0.7s 0.4s ease;
             z-index: 40;
         }
 
@@ -112,8 +119,8 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 160px solid var(--secondary);
-            border-right: 160px solid var(--secondary);
+            border-left: 160px solid var(--primary-red);
+            border-right: 160px solid var(--primary-red);
             border-top: 110px solid transparent;
             z-index: 20;
         }
@@ -122,64 +129,65 @@
             position: absolute;
             top: 85px;
             left: 140px;
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
+            width: 45px;
+            height: 45px;
+            background: var(--black);
             border-radius: 50%;
             z-index: 45;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 18px;
-            box-shadow: 0 0 20px var(--primary);
+            color: var(--primary-red);
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            border: 2px solid var(--primary-red);
             transition: opacity 0.3s;
         }
 
         .letter {
             position: absolute;
-            bottom: 10px;
+            bottom: 12px;
             left: 15px;
             width: 290px;
             height: 200px;
-            background: var(--paper);
-            padding: 30px 20px;
+            background: var(--white);
+            padding: 35px 25px;
             box-sizing: border-box;
-            transition: transform 0.8s 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.8s 0.6s;
+            transition: transform 0.9s 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.9s 0.6s;
             z-index: 15;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 1px solid #f8d7da;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border-radius: 5px;
             overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--secondary) transparent;
         }
 
         .text {
-            font-size: 1.3rem;
-            color: var(--text);
-            line-height: 26px;
+            font-size: 1.4rem;
+            color: var(--black);
+            line-height: 28px;
             font-family: 'Great Vibes', cursive;
             text-align: left;
         }
 
+        .text b { color: var(--primary-red); }
+
         .open .envelope::before { transform: rotateX(180deg); z-index: 5; }
         .open .seal { opacity: 0; }
-        .open .letter { transform: translateY(-200px); height: 500px; z-index: 35; }
+        .open .letter { transform: translateY(-210px); height: 520px; z-index: 35; }
 
         .hint {
             position: fixed;
-            bottom: 40px;
-            color: var(--secondary);
+            bottom: 45px;
+            color: var(--white);
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
             animation: pulse 2s infinite;
             z-index: 200;
+            text-transform: uppercase;
         }
 
-        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.8; } }
 
-        /* Partículas de Margarida e Coração */
         .particle {
             position: absolute;
             pointer-events: none;
@@ -189,8 +197,8 @@
 
         @keyframes float-up {
             0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.5) rotate(720deg); opacity: 0; }
+            15% { opacity: 1; }
+            100% { transform: translateY(-15vh) scale(1.4) rotate(720deg); opacity: 0; }
         }
     </style>
 </head>
@@ -198,15 +206,15 @@
 
     <div id="connection-status">
         <div class="dot"></div>
-        CONEXÃO SEGURA: RUBENS ↔ JULIANA
+        CONEXÃO PRIVADA: RUBENS ↔ JULIANA
     </div>
 
-    <div id="timer">CONECTADOS HÁ: <span id="time-elapsed"></span></div>
+    <div id="timer">ESTAMOS JUNTOS HÁ: <span id="time-elapsed"></span></div>
 
     <div class="container">
         <div class="envelope-wrapper" id="envelopeWrapper" onclick="openLetter()">
             <div class="envelope">
-                <div class="seal">J ❤️ R</div>
+                <div class="seal">❤️</div>
             </div>
             <div class="letter">
                 <div class="text" id="typewriter"></div>
@@ -214,14 +222,14 @@
         </div>
     </div>
 
-    <div class="hint">CLIQUE PARA ABRIR O SEU CORAÇÃO</div>
+    <div class="hint">TOQUE PARA REVELAR</div>
 
     <script>
-        const message = "Minha querida Juliana,\n\nDizem que o acaso não existe, e em 27 de março de 2026, eu tive a prova definitiva disso. Entre tantos perfis, tantas mensagens e tantas telas, meus olhos encontraram os seus e meu mundo ganhou uma cor que eu nem sabia que existia.\n\nObrigado por transformar uma simples conversa na minha espera favorita de todos os dias. Em 01 de abril, o destino decidiu que não era apenas uma coincidência, mas o início da nossa história. Muitos chamam de dia da mentira, mas para nós, foi o dia em que a verdade mais linda floresceu: o nosso 'nós'.\n\nSei que hoje uma tela ainda nos separa fisicamente, mas saiba que não há distância capaz de apagar o brilho do que sentimos. Cada notificação sua é um abraço na alma, e cada palavra digitada é um beijo que guardo com carinho para o dia em que finalmente puder te olhar nos olhos.\n\nVocê é minha conexão mais profunda, minha maior certeza... minha Juliana.\n\nCom todo o meu amor e uma saudade que já não cabe em bytes,\nSeu Rubens ❤️";
+        const message = "Minha querida <b>Juliana</b>,\n\nDizem que o acaso não existe, e em <b>27 de março de 2026</b>, eu tive a prova definitiva disso. Entre tantos caminhos e tantas telas, meus olhos encontraram os seus e meu mundo ganhou uma cor que eu nem sabia que existia.\n\nObrigado por transformar uma simples conversa na minha espera favorita de todos os dias. Em <b>01 de abril</b>, o destino decidiu que não era apenas uma coincidência, mas o início da nossa história. Muitos chamam de dia da mentira, mas para nós, foi o dia em que a verdade mais linda floresceu: o nosso 'nós'.\n\nSei que hoje uma tela ainda nos separa fisicamente, mas saiba que não há distância capaz de apagar o brilho do que sentimos. Cada notificação sua é um abraço na alma, e cada palavra digitada é um beijo que guardo com carinho para o dia em que finalmente puder te olhar nos olhos.\n\nVocê é minha conexão mais profunda, minha maior certeza... minha <b>Juliana</b>.\n\nCom todo o meu amor e uma saudade que já não cabe em bytes,\nSeu Rubens ❤️";
         
         const startDate = new Date('2026-04-01T00:00:00');
         let i = 0;
-        let speed = 65;
+        let speed = 60;
         let isOpened = false;
 
         function updateTimer() {
@@ -250,8 +258,15 @@
         function typeWriter() {
             if (i < message.length) {
                 const char = message.charAt(i);
-                document.getElementById("typewriter").innerHTML += char === '\n' ? '<br>' : char;
-                i++;
+                // Permite tags HTML como <b>
+                if (char === '<') {
+                    const tagEnd = message.indexOf('>', i);
+                    document.getElementById("typewriter").innerHTML += message.substring(i, tagEnd + 1);
+                    i = tagEnd + 1;
+                } else {
+                    document.getElementById("typewriter").innerHTML += char === '\n' ? '<br>' : char;
+                    i++;
+                }
                 setTimeout(typeWriter, speed);
             }
         }
@@ -260,13 +275,17 @@
             const particle = document.createElement('div');
             particle.classList.add('particle');
             
-            // Alterna entre Margaridas e Corações
-            const items = ['🌼', '❤️', '💖', '🌼', '✨'];
+            const items = ['🌼', '❤️', '🌼', '✨'];
             particle.innerHTML = items[Math.floor(Math.random() * items.length)];
             
             particle.style.left = Math.random() * 100 + 'vw';
             particle.style.fontSize = (Math.random() * 25 + 15) + 'px';
-            particle.style.filter = particle.innerHTML === '🌼' ? 'drop-shadow(0 0 5px rgba(255,255,255,0.8))' : 'none';
+            
+            if(particle.innerHTML === '🌼' || particle.innerHTML === '✨') {
+                particle.style.filter = 'drop-shadow(0 0 8px white)';
+            } else {
+                particle.style.filter = 'drop-shadow(0 0 8px var(--primary-red))';
+            }
             
             document.body.appendChild(particle);
             setTimeout(() => particle.remove(), 5000);
