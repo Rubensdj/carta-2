@@ -13,7 +13,8 @@
             --bg: #1a1a1a;
             --paper: #ffffff;
             --text: #590d22;
-            --glow: rgba(255, 77, 109, 0.6);
+            --glow: rgba(255, 255, 255, 0.3);
+            --daisy-center: #ffd700;
         }
 
         body {
@@ -78,7 +79,7 @@
 
         .envelope-wrapper:hover {
             transform: scale(1.05);
-            filter: drop-shadow(0 0 20px var(--glow));
+            filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.6));
         }
 
         .envelope {
@@ -153,9 +154,6 @@
             scrollbar-color: var(--secondary) transparent;
         }
 
-        .letter::-webkit-scrollbar { width: 4px; }
-        .letter::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
-
         .text {
             font-size: 1.3rem;
             color: var(--text);
@@ -181,16 +179,18 @@
 
         @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-        .heart-particle {
+        /* Partículas de Margarida e Coração */
+        .particle {
             position: absolute;
             pointer-events: none;
-            animation: float-up 4s linear forwards;
+            animation: float-up 5s linear forwards;
             z-index: 1;
         }
 
         @keyframes float-up {
-            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5) rotate(720deg); opacity: 0; }
         }
     </style>
 </head>
@@ -244,7 +244,7 @@
             
             setInterval(updateTimer, 1000);
             setTimeout(typeWriter, 1500);
-            setInterval(createHeart, 350);
+            setInterval(spawnParticles, 300);
         }
 
         function typeWriter() {
@@ -256,15 +256,20 @@
             }
         }
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-particle');
-            const hearts = ['❤️', '💖', '💝', '💕', '💗', '✨'];
-            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 4000);
+        function spawnParticles() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Alterna entre Margaridas e Corações
+            const items = ['🌼', '❤️', '💖', '🌼', '✨'];
+            particle.innerHTML = items[Math.floor(Math.random() * items.length)];
+            
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.fontSize = (Math.random() * 25 + 15) + 'px';
+            particle.style.filter = particle.innerHTML === '🌼' ? 'drop-shadow(0 0 5px rgba(255,255,255,0.8))' : 'none';
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 5000);
         }
     </script>
 </body>
