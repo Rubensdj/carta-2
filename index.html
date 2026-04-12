@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Juliana ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300&display=swap');
+
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff758f;
+            --bg: #1a1a1a;
+            --paper: #ffffff;
+            --text: #590d22;
+            --glow: rgba(255, 77, 109, 0.6);
+        }
+
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #2b0d15 0%, #000000 100%);
+            font-family: 'Dancing Script', cursive;
+            overflow: hidden;
+        }
+
+        #connection-status {
+            position: fixed;
+            top: 30px;
+            font-family: 'Montserrat', sans-serif;
+            color: #00ff41;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 200;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff41;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+            box-shadow: 0 0 10px #00ff41;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        #timer {
+            position: fixed;
+            top: 60px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 2s;
+            z-index: 200;
+        }
+
+        .container {
+            position: relative;
+            z-index: 100;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px var(--glow));
+        }
+
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background: var(--secondary);
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            z-index: 10;
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 110px solid var(--primary);
+            transform-origin: top;
+            transition: transform 0.6s 0.4s ease;
+            z-index: 40;
+        }
+
+        .envelope::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid var(--secondary);
+            border-right: 160px solid var(--secondary);
+            border-top: 110px solid transparent;
+            z-index: 20;
+        }
+
+        .seal {
+            position: absolute;
+            top: 85px;
+            left: 140px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            z-index: 45;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            box-shadow: 0 0 20px var(--primary);
+            transition: opacity 0.3s;
+        }
+
+        .letter {
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            width: 290px;
+            height: 200px;
+            background: var(--paper);
+            padding: 30px 20px;
+            box-sizing: border-box;
+            transition: transform 0.8s 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.8s 0.6s;
+            z-index: 15;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #f8d7da;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary) transparent;
+        }
+
+        .letter::-webkit-scrollbar { width: 4px; }
+        .letter::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+
+        .text {
+            font-size: 1.3rem;
+            color: var(--text);
+            line-height: 26px;
+            font-family: 'Great Vibes', cursive;
+            text-align: left;
+        }
+
+        .open .envelope::before { transform: rotateX(180deg); z-index: 5; }
+        .open .seal { opacity: 0; }
+        .open .letter { transform: translateY(-200px); height: 500px; z-index: 35; }
+
+        .hint {
+            position: fixed;
+            bottom: 40px;
+            color: var(--secondary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            animation: pulse 2s infinite;
+            z-index: 200;
+        }
+
+        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: float-up 4s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="connection-status">
+        <div class="dot"></div>
+        CONEXÃO SEGURA: RUBENS ↔ JULIANA
+    </div>
+
+    <div id="timer">CONECTADOS HÁ: <span id="time-elapsed"></span></div>
+
+    <div class="container">
+        <div class="envelope-wrapper" id="envelopeWrapper" onclick="openLetter()">
+            <div class="envelope">
+                <div class="seal">J ❤️ R</div>
+            </div>
+            <div class="letter">
+                <div class="text" id="typewriter"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hint">CLIQUE PARA ABRIR O SEU CORAÇÃO</div>
+
+    <script>
+        const message = "Minha querida Juliana,\n\nDizem que o acaso não existe, e em 27 de março de 2026, eu tive a prova definitiva disso. Entre tantos perfis, tantas mensagens e tantas telas, meus olhos encontraram os seus e meu mundo ganhou uma cor que eu nem sabia que existia.\n\nObrigado por transformar uma simples conversa na minha espera favorita de todos os dias. Em 01 de abril, o destino decidiu que não era apenas uma coincidência, mas o início da nossa história. Muitos chamam de dia da mentira, mas para nós, foi o dia em que a verdade mais linda floresceu: o nosso 'nós'.\n\nSei que hoje uma tela ainda nos separa fisicamente, mas saiba que não há distância capaz de apagar o brilho do que sentimos. Cada notificação sua é um abraço na alma, e cada palavra digitada é um beijo que guardo com carinho para o dia em que finalmente puder te olhar nos olhos.\n\nVocê é minha conexão mais profunda, minha maior certeza... minha Juliana.\n\nCom todo o meu amor e uma saudade que já não cabe em bytes,\nSeu Rubens ❤️";
+        
+        const startDate = new Date('2026-04-01T00:00:00');
+        let i = 0;
+        let speed = 65;
+        let isOpened = false;
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+            document.getElementById('time-elapsed').innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
+        }
+
+        function openLetter() {
+            if(isOpened) return;
+            isOpened = true;
+            
+            document.getElementById('envelopeWrapper').classList.add('open');
+            document.querySelector('.hint').style.display = 'none';
+            document.getElementById('timer').style.opacity = '1';
+            
+            setInterval(updateTimer, 1000);
+            setTimeout(typeWriter, 1500);
+            setInterval(createHeart, 350);
+        }
+
+        function typeWriter() {
+            if (i < message.length) {
+                const char = message.charAt(i);
+                document.getElementById("typewriter").innerHTML += char === '\n' ? '<br>' : char;
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            const hearts = ['❤️', '💖', '💝', '💕', '💗', '✨'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+    </script>
+</body>
+</html>
