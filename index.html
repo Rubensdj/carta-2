@@ -29,13 +29,13 @@
             overflow: hidden;
         }
 
-        /* Status de Conexão - Estilo Elegante */
+        /* Status de Conexão */
         #connection-status {
             position: fixed;
-            top: 30px;
+            top: 20px;
             font-family: 'Montserrat', sans-serif;
             color: var(--white);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             display: flex;
@@ -59,10 +59,10 @@
 
         #timer {
             position: fixed;
-            top: 65px;
+            top: 50px;
             font-family: 'Montserrat', sans-serif;
             color: var(--primary-red);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-align: center;
             opacity: 0;
             transition: opacity 2s;
@@ -76,7 +76,6 @@
             z-index: 100;
         }
 
-        /* Envelope Vermelho & Preto */
         .envelope-wrapper {
             position: relative;
             cursor: pointer;
@@ -151,39 +150,43 @@
             width: 290px;
             height: 200px;
             background: var(--white);
-            padding: 35px 25px;
+            padding: 30px 20px;
             box-sizing: border-box;
             transition: transform 0.9s 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.9s 0.6s;
             z-index: 15;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             border-radius: 5px;
             overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-red) transparent;
         }
 
+        .letter::-webkit-scrollbar { width: 4px; }
+        .letter::-webkit-scrollbar-thumb { background: var(--primary-red); border-radius: 10px; }
+
         .text {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--black);
             line-height: 28px;
             font-family: 'Great Vibes', cursive;
             text-align: left;
         }
 
-        .text b { color: var(--primary-red); }
+        .text b { color: var(--primary-red); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 1px; }
 
         .open .envelope::before { transform: rotateX(180deg); z-index: 5; }
         .open .seal { opacity: 0; }
-        .open .letter { transform: translateY(-210px); height: 520px; z-index: 35; }
+        .open .letter { transform: translateY(-220px); height: 540px; z-index: 35; }
 
         .hint {
             position: fixed;
-            bottom: 45px;
+            bottom: 40px;
             color: var(--white);
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 4px;
             animation: pulse 2s infinite;
             z-index: 200;
-            text-transform: uppercase;
         }
 
         @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.8; } }
@@ -209,12 +212,12 @@
         CONEXÃO PRIVADA: RUBENS ↔ JULIANA
     </div>
 
-    <div id="timer">ESTAMOS JUNTOS HÁ: <span id="time-elapsed"></span></div>
+    <div id="timer">CONECTADOS HÁ: <span id="time-elapsed"></span></div>
 
     <div class="container">
         <div class="envelope-wrapper" id="envelopeWrapper" onclick="openLetter()">
             <div class="envelope">
-                <div class="seal">❤️</div>
+                <div class="seal">J ❤️ R</div>
             </div>
             <div class="letter">
                 <div class="text" id="typewriter"></div>
@@ -225,11 +228,11 @@
     <div class="hint">TOQUE PARA REVELAR</div>
 
     <script>
-        const message = "Minha querida <b>Juliana</b>,\n\nDizem que o acaso não existe, e em <b>27 de março de 2026</b>, eu tive a prova definitiva disso. Entre tantos caminhos e tantas telas, meus olhos encontraram os seus e meu mundo ganhou uma cor que eu nem sabia que existia.\n\nObrigado por transformar uma simples conversa na minha espera favorita de todos os dias. Em <b>01 de abril</b>, o destino decidiu que não era apenas uma coincidência, mas o início da nossa história. Muitos chamam de dia da mentira, mas para nós, foi o dia em que a verdade mais linda floresceu: o nosso 'nós'.\n\nSei que hoje uma tela ainda nos separa fisicamente, mas saiba que não há distância capaz de apagar o brilho do que sentimos. Cada notificação sua é um abraço na alma, e cada palavra digitada é um beijo que guardo com carinho para o dia em que finalmente puder te olhar nos olhos.\n\nVocê é minha conexão mais profunda, minha maior certeza... minha <b>Juliana</b>.\n\nCom todo o meu amor e uma saudade que já não cabe em bytes,\nSeu Rubens ❤️";
+        const message = "Minha querida <b>JULIANA</b>,\n\nSabe quando você conhece alguém e esse alguém surpreende todas as suas expectativas? Sabe aquele alguém que ilumina os seus dias, que faz com que cada pequeno momento se torne único, cada qual do seu modo diferente?\n\nAquele alguém que te faz a pessoa mais feliz com um sorriso ou uma simples palavra de amor? Aquele alguém que quando está longe deixa saudade, falta? Que faz com que você pense nele a cada segundo, sendo o dono não somente do seu pensamento, mas também do seu coração?\n\nE faz com que tenhamos necessidade de tê-lo a todo momento perto de nós? Aquele alguém que você ama com todas as suas forças e que faz com que esse amor só aumente com o passar dos dias, das horas, dos minutos, dos segundos?\n\nAquele alguém todo especial, que te ama, te aceita como você é? Aquele alguém que a cada dia se torna mais importante e que faz parte da sua vida de tal forma que você já não consegue imaginá-la sem ele por perto?\n\nAquele alguém que rouba o teu sorriso mais sincero, que faz com que os seus olhos brilhem e que seu corpo se arrepie por apenas imaginar um toque?\n\nAquele alguém que preenche qualquer tipo de vazio, que faz com que você se sinta a pessoa mais completa apenas por tê-lo ali, contigo? Aquele alguém que você passa horas escutando sua voz ao telefone e você nunca se cansa?\n\nAquele alguém que você confia, que te protege, que te cuida?\n\nDemorou. Mas eu encontrei esse alguém.\n\n<b>E ESSE ALGUÉM É VOCÊ.</b>\n\nTe amo infinitamente,\nSeu Rubens ❤️";
         
         const startDate = new Date('2026-04-01T00:00:00');
         let i = 0;
-        let speed = 60;
+        let speed = 55;
         let isOpened = false;
 
         function updateTimer() {
@@ -258,7 +261,6 @@
         function typeWriter() {
             if (i < message.length) {
                 const char = message.charAt(i);
-                // Permite tags HTML como <b>
                 if (char === '<') {
                     const tagEnd = message.indexOf('>', i);
                     document.getElementById("typewriter").innerHTML += message.substring(i, tagEnd + 1);
@@ -267,6 +269,10 @@
                     document.getElementById("typewriter").innerHTML += char === '\n' ? '<br>' : char;
                     i++;
                 }
+                // Auto-scroll para acompanhar a escrita
+                const letter = document.querySelector('.letter');
+                letter.scrollTop = letter.scrollHeight;
+                
                 setTimeout(typeWriter, speed);
             }
         }
@@ -274,10 +280,8 @@
         function spawnParticles() {
             const particle = document.createElement('div');
             particle.classList.add('particle');
-            
             const items = ['🌼', '❤️', '🌼', '✨'];
             particle.innerHTML = items[Math.floor(Math.random() * items.length)];
-            
             particle.style.left = Math.random() * 100 + 'vw';
             particle.style.fontSize = (Math.random() * 25 + 15) + 'px';
             
